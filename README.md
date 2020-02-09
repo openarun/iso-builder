@@ -26,7 +26,7 @@ The following example uses Docker and assumes you have Docker correctly installe
 
     cd /usr/share/debootstrap/scripts
 
-    cp disco eoan
+    cp disco focal
     
     cd
 
@@ -40,7 +40,7 @@ The following example uses Docker and assumes you have Docker correctly installe
     
     cd /home/cinnamonremix
     
-    git clone https://github.com/ubuntubudgie/iso-builder -b cinnamonv2
+    git clone https://github.com/Ubuntu-Cinnamon-Remix/iso-builder -b cinnamonv2
     
     cd iso-builder
     
