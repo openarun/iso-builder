@@ -1,11 +1,11 @@
 prompt 0
 
 MENU HIDDEN
-MENU AUTOBOOT Booting cinnamon remix live disk in # seconds
+MENU AUTOBOOT Booting Ubuntu Cinnamon live disk in # seconds
 timeout 50
 
 label live-@FLAVOUR@
-	menu label ^Try or install cinnamon remix
+	menu label ^Try or install Ubuntu Cinnamon
 	menu default
 	linux /casper/vmlinuz
 	initrd /casper/initrd.lz
@@ -19,3 +19,7 @@ label check
 label hd
 	menu label ^Boot from first hard disk
 	localboot 0x80
+
+label rb
+	menu label ^Rebooot system
+	reboot
