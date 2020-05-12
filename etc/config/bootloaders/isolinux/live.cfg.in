@@ -11,12 +11,10 @@ label live-@FLAVOUR@
 	initrd /casper/initrd.lz
 	append @APPEND_LIVE@
 
-label live-failsafe
-	menu label Start Ubuntu Cinnamon (Safe Graphics)
-	set gfxpayload=keep
+label check
+	menu label ^Check disk for defects
 	linux /casper/vmlinuz
-	initrd /casper/initrd.lz
-	append @APPEND_LIVE@ nomodeset
+	append boot=casper integrity-check initrd=/casper/initrd.lz quiet --
 
 label hd
 	menu label ^Boot from first hard disk
@@ -25,7 +23,3 @@ label hd
 label rb
 	menu label ^Reboot system
 	reboot
-
-label power
-	MENU LABEL ^Power Off
-	COM32 poweroff.c32

@@ -4,3 +4,9 @@
 rm -f /var/lib/apt/lists/*_Packages
 rm -f /var/lib/apt/lists/*_Sources
 rm -f /var/lib/apt/lists/*_Translation-*
+
+# Change ownership of Desktop folder from root to cinnamon-remix
+chown cinnamon-remix -R /home/cinnamon-remix/Desktop
+chown cinnamon-remix -R /home/cinnamon-remix/Desktop/cinnamon-remix-calamares.desktop
+chown cinnamon-remix:cinnamon-remix -R /home/cinnamon-remix/Desktop
+chown cinnamon-remix:cinnamon-remix -R /home/cinnamon-remix/Desktop/cinnamon-remix-calamares.desktop
