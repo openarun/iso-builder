@@ -5,6 +5,8 @@ on:
     branches: [ focal ]
   pull_request:
     branches: [ focal ]
+  schedule:
+    - cron: ' 0 0 * * * '
 
 jobs:
   build:
