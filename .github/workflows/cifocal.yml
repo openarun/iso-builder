@@ -1,0 +1,32 @@
+name: CI - Focal
+
+on:
+  push:
+    branches: [ focal ]
+  pull_request:
+    branches: [ focal ]
+
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install debootstrap
+      run: apt update && apt install debootstrap -y
+    
+    - name: Copy version scripts in debootstrap
+      run: |
+        cd /usr/share/debootstrap/scripts
+        cp disco focal
+        
+    - name: Begin live-build preparation/build, install base dependencies
+      run: |
+        cd /home/runner/work/iso-builder/iso-builder
+        ./build.sh
+    
+    - name: Terraform ISO by installing our UCR packages
+      run: |
+        ./terraform.sh
