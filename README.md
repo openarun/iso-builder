@@ -26,7 +26,7 @@ The following example uses Docker and assumes you have Docker correctly installe
 
     cd /usr/share/debootstrap/scripts
 
-    cp disco focal
+    cp disco (distro your building)
     
     cd
 
