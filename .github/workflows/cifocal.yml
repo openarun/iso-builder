@@ -18,11 +18,6 @@ jobs:
 
     - name: Install debootstrap
       run: sudo apt update && sudo apt install debootstrap -y
-    
-    - name: Copy version scripts in debootstrap
-      run: |
-        cd /usr/share/debootstrap/scripts
-        sudo cp disco focal
         
     - name: Begin live-build preparation/build, install base dependencies
       run: |
