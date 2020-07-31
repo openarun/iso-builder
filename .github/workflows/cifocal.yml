@@ -1,29 +1,39 @@
-name: CI - Focal
+name: Ubuntu Cinnamon Remix 20.04 Focal Daily
 
 on:
   push:
-    branches: [ focal ]
+    branches: [ cinnamonv2 ]
   pull_request:
-    branches: [ focal ]
+    branches: [ cinnamonv2 ]
   schedule:
-    - cron: ' 0 0 * * * '
+    - cron: ' 0 12 * * * '
 
 jobs:
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-20.04
+    container:
+      image: debian:latest
+      options: --privileged -it
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Install debootstrap
-      run: sudo apt update && sudo apt install debootstrap -y
+    - name: Install debootstrap/git
+      run: apt update && apt install git debootstrap -y
         
-    - name: Begin live-build preparation/build, install base dependencies
+    - name: Copy debootstrap scripts to distro
       run: |
-        cd /home/runner/work/iso-builder/iso-builder
-        sudo ./build.sh
+        cd /usr/share/debootstrap/scripts
+        cp disco focal
     
-    - name: Terraform ISO by installing our UCR packages
+    - name: Build ISO
       run: |
-        sudo ./terraform.sh
+        cd /
+        git clone https://github.com/Ubuntu-Cinnamon-Remix/iso-builder -b cinnamonv2
+        cd iso-builder
+        ./build.sh
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Ubuntu Cinnamon Remix 20.04.1 Daily
+        path: /iso-builder/builds/amd64
