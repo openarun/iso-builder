@@ -1,12 +1,12 @@
-name: Ubuntu Cinnamon Remix 20.04 Focal Daily
+name: Ubuntu Cinnamon Remix 20.10 Groovy (development branch) Daily
 
 on:
   push:
-    branches: [ cinnamonv2 ]
+    branches: [ master ]
   pull_request:
-    branches: [ cinnamonv2 ]
+    branches: [ master ]
   schedule:
-    - cron: ' 0 12 * * * '
+    - cron: ' 0 16 * * * '
 
 jobs:
   build:
@@ -20,20 +20,20 @@ jobs:
 
     - name: Install debootstrap/git
       run: apt update && apt install git debootstrap -y
-        
+
     - name: Copy debootstrap scripts to distro
       run: |
         cd /usr/share/debootstrap/scripts
-        cp disco focal
-    
+        cp disco groovy
+
     - name: Build ISO
       run: |
         cd /
-        git clone https://github.com/Ubuntu-Cinnamon-Remix/iso-builder -b cinnamonv2
+        git clone https://github.com/Ubuntu-Cinnamon-Remix/iso-builder
         cd iso-builder
         ./build.sh
 
     - uses: actions/upload-artifact@v2
       with:
-        name: Ubuntu Cinnamon Remix 20.04.1 Daily
+        name: Ubuntu Cinnamon Remix 20.10 (development branch) Daily
         path: /iso-builder/builds/amd64

@@ -12,6 +12,7 @@ reiserfsprogs
 ntfs-3g
 lvm2
 dmraid
+ubiquity-frontend-gtk
 wamerican
 fwupdate
 mokutil
