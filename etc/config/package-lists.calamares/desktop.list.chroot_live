@@ -9,6 +9,8 @@ calamares-settings-cinnamon-remix
 xfsprogs
 jfsutils
 reiserfsprogs
+shim-signed
+shim
 ntfs-3g
 lvm2
 dmraid
